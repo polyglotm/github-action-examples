@@ -1,0 +1,14 @@
+on:
+  pull_request_target:
+    types: [ labeled ]
+
+jobs:
+  close-pull-request:
+    if: ${{ contains( github.event.pull_request.labels.*.name, 'size/XL') || contains( github.event.pull_request.labels.*.name, 'size/XXL') }}
+    needs: size-label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          # Optional. Post a issue comment just before closing a pull request.
+          comment: "We can not accept PRs because of PR size over than 'Large(499 line)'"
