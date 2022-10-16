@@ -1,0 +1,16 @@
+# https://github.com/marketplace/actions/assign-size-label
+name: size-label_with_close-pull-request
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  size-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: size-label
+        uses: "pascalgn/size-label-action@v0.4.3"
+        env:
+          GITHUB_TOKEN: "${{ secrets.PERSONAL_GITHUB_TOKEN }}"
