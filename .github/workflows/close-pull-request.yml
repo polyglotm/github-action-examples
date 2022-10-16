@@ -1,3 +1,5 @@
+name: close-pull-request
+
 on:
   pull_request_target:
     types: [
