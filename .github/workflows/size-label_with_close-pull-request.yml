@@ -20,7 +20,7 @@ jobs:
 
   close-pull-request:
     if: ${{ github.event.label.name == 'size/XL' || github.event.label.name == 'size/XXL' }}
-    need: size-label
+    needs: size-label
     runs-on: ubuntu-latest
     steps:
       - uses: superbrothers/close-pull-request@v3
