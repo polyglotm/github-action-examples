@@ -1,6 +1,14 @@
 # https://github.com/marketplace/actions/assign-size-label
-name: size-label
-on: pull_request
+name: size-label_with_close-pull-request
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
 jobs:
   size-label:
     runs-on: ubuntu-latest
@@ -9,3 +17,13 @@ jobs:
         uses: "pascalgn/size-label-action@v0.4.3"
         env:
           GITHUB_TOKEN: "${{ secrets.PERSONAL_GITHUB_TOKEN }}"
+
+  close-pull-request:
+    if: ${{ github.event.label.name == 'size/XL' || github.event.label.name == 'size/XXL' }}
+    need: size-label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          # Optional. Post a issue comment just before closing a pull request.
+          comment: "We can not accept PRs because of PR size over than 'Large(499 line)'"
