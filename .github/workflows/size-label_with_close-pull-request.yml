@@ -2,9 +2,6 @@
 name: size-label_with_close-pull-request
 
 on:
-  push:
-    branches:
-      - '**'
   pull_request:
     branches:
       - '**'
