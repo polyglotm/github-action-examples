@@ -14,13 +14,8 @@ jobs:
         uses: "pascalgn/size-label-action@v0.4.3"
         env:
           GITHUB_TOKEN: "${{ secrets.PERSONAL_GITHUB_TOKEN }}"
-
-  close-pull-request:
-    if: ${{ contains( github.event.pull_request.labels.*.name, 'size/XL') || contains( github.event.pull_request.labels.*.name, 'size/XXL') }}
-    needs: size-label
-    runs-on: ubuntu-latest
-    steps:
       - uses: superbrothers/close-pull-request@v3
+        if: ${{ contains( github.event.pull_request.labels.*.name, 'size/XL') || contains( github.event.pull_request.labels.*.name, 'size/XXL') }}
         with:
           # Optional. Post a issue comment just before closing a pull request.
           comment: "We can not accept PRs because of PR size over than 'Large(499 line)'"
