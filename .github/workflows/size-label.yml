@@ -1,5 +1,5 @@
 # https://github.com/marketplace/actions/assign-size-label
-name: size-label_with_close-pull-request
+name: size-label
 
 on:
   pull_request:
