@@ -2,17 +2,7 @@ name: close-pull-request
 
 on:
   pull_request_target:
-    types: [
-      labeled,
-      unlabeled,
-      opened,
-      edited,
-      reopened,
-      synchronize,
-      converted_to_draft,
-      ready_for_review,
-      review_requested,
-    ]
+    types: [ labeled, unlabeled, opened, edited, reopened, synchronize, converted_to_draft, ready_for_review, review_requested ]
 
 jobs:
   close-pull-request:
